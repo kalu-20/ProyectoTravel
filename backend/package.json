@@ -1,0 +1,23 @@
+{
+  "name": "travels-backend",
+  "version": "1.0.0",
+  "description": "api restful service for travels project created with node, express and mysql.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file .env index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "travels",
+    "mysql",
+    "expressjs"
+  ],
+  "author": "kalu-20",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.10.3"
+  }
+}
