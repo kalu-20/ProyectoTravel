@@ -118,10 +118,9 @@ ALTER TABLE travel_passenger ADD CONSTRAINT travel_passenger_travels FOREIGN KEY
     REFERENCES travels (id);
 
 -- End of file.
-
+ALTER TABLE places ADD COLUMN category VARCHAR(50);
 
 select * from users;
-
 
 INSERT INTO users (id, email, password, type) VALUES
 (1, 'johndoe@example.com', 'password123', 'regular'),
@@ -129,24 +128,26 @@ INSERT INTO users (id, email, password, type) VALUES
 (3, 'alicejohnson@example.com', 'password123', 'regular'),
 (4, 'bobbrown@example.com', 'password123', 'regular'),
 (5, 'charliedavis@example.com', 'password123', 'regular'),
-(6, 'emilywhite@example.com', 'password123', 'admin'),
-(7, 'frankblack@example.com', 'password123', 'admin'),
-(8, 'gracegreen@example.com', 'password123', 'admin'),
+(6, 'dulcemariafabian@hotmail.com', 'password123', 'admin'),
+(7, 'meumeroy@gmail.com', 'password123', 'admin'),
+(8, 'gracegreen@example.com', 'password123', 'regular'),
 (9, 'hannahblue@example.com', 'password123', 'regular'),
 (10, 'ianorange@example.com', 'password123', 'regular');
 
 
 INSERT INTO cities (id, name, img_url) VALUES
-(1, 'New York', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/New_york_times_square-terabass.jpg/2560px-New_york_times_square-terabass.jpg'),
-(2, 'Los Angeles', 'https://a.travel-assets.com/findyours-php/viewfinder/images/res40/475000/475457-Los-Angeles.jpg'),
-(3, 'Chicago', 'https://cdn.pixabay.com/photo/2016/11/06/23/51/buildings-1804479_640.jpg'),
-(4, 'Houston', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Panoramic_Houston_skyline.jpg/1024px-Panoramic_Houston_skyline.jpg'),
-(5, 'Phoenix', 'https://example.com/phoenix.jpg'),
-(6, 'Philadelphia', 'https://example.com/philly.jpg'),
-(7, 'San Antonio', 'https://example.com/san_antonio.jpg'),
-(8, 'San Diego', 'https://example.com/san_diego.jpg'),
-(9, 'Dallas', 'https://example.com/dallas.jpg'),
-(10, 'San Jose', 'https://example.com/san_jose.jpg');
+(1, 'Chicoana', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Iglesia_San_Pablo_de_Chicoana.jpg/220px-Iglesia_San_Pablo_de_Chicoana.jpg'),
+(2, 'Cachi', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Calle_en_Cachi.JPG/120px-Calle_en_Cachi.JPG'),
+(3, 'Payogasta', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Payogasta_361.JPG/320px-Payogasta_361.JPG'),
+(4, 'Angastaco', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Eglise_Angastaco.JPG/220px-Eglise_Angastaco.JPG'),
+(5, 'San Carlos', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/San_Carlos_524.JPG/320px-San_Carlos_524.JPG'),
+(6, 'Animana', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/RN40-AR.svg/175px-RN40-AR.svg.png'),
+(7, 'Cafayate', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Vi%C3%B1edoCafayate.jpg/120px-Vi%C3%B1edoCafayate.jpg'),
+(8, 'Quebrada de Las Conchas', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Tour_to_the_Quebrada_de_las_Conchas.jpg/120px-Tour_to_the_Quebrada_de_las_Conchas.jpg'),
+(9, 'La ViÃ±a', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Esperando_%27el_pique%27_-_Pescadero_La_Isla_-_panoramio.jpg/250px-Esperando_%27el_pique%27_-_Pescadero_La_Isla_-_panoramio.jpg'),
+(10, 'Dique Cabra Corral', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Embalse_Cabra_Corral_-_Presa_General_Manuel_Belgrano.jpg/300px-Embalse_Cabra_Corral_-_Presa_General_Manuel_Belgrano.jpg');
+
+
 
 INSERT INTO profiles (id, name, dni, phone, users_id, cities_id) VALUES
 (1, 'John Doe', '123456789', '+1234567890', 1, 1),
@@ -154,110 +155,88 @@ INSERT INTO profiles (id, name, dni, phone, users_id, cities_id) VALUES
 (3, 'Alice Johnson', '456123789', '+4561237890', 3, 3),
 (4, 'Bob Brown', '321654987', '+3216549870', 4, 4),
 (5, 'Charlie Davis', '789456123', '+7894561230', 5, 5),
-(6, 'Emily White', '654321789', '+6543217890', 6, 6),
-(7, 'Frank Black', '147258369', '+1472583690', 7, 7),
+(6, 'Claudia Fabian', '29603678', '+5493875488978', 6, 6),
+(7, 'Eugenia Roy', '22468314', '+5493874511380', 7, 7),
 (8, 'Grace Green', '369258147', '+3692581470', 8, 8),
 (9, 'Hannah Blue', '258369147', '+2583691470', 9, 9),
 (10, 'Ian Orange', '963852741', '+9638527410', 10, 10);
 
 
-
-
 INSERT INTO travels (id, name, start_date, end_date, cost) VALUES
-(1, 'East Coast Adventure', '2024-08-01', '2024-08-10', 1500.00),
-(2, 'West Coast Expedition', '2024-08-05', '2024-08-15', 2000.00),
-(3, 'Midwest Journey', '2024-08-10', '2024-08-20', 1800.00),
-(4, 'Southern Tour', '2024-08-15', '2024-08-25', 1700.00),
-(5, 'Northern Lights', '2024-08-20', '2024-08-30', 2200.00),
-(6, 'Coastal Cruise', '2024-08-25', '2024-09-05', 2500.00),
-(7, 'Desert Discovery', '2024-09-01', '2024-09-10', 1600.00),
-(8, 'Mountain Retreat', '2024-09-05', '2024-09-15', 2100.00),
-(9, 'Lakeside Leisure', '2024-09-10', '2024-09-20', 2300.00),
-(10, 'City Sights', '2024-09-15', '2024-09-25', 1900.00);
-
+(1, 'Chicoana de Festivales', '2024-08-01', '2024-08-02', 150.00),
+(2, 'Cachi Encantado', '2024-08-05', '2024-08-07', 200.00),
+(3, 'Tradicion de Payogasta', '2024-08-10', '2024-08-11', 180.00),
+(4, 'Verde y Arena de Angastaco', '2024-08-15', '2024-08-16', 170.00),
+(5, 'San Carlos Tour', '2024-08-20', '2024-08-22', 220.00),
+(6, 'Animana Unica', '2024-08-25', '2024-09-27', 250.00),
+(7, 'Cafayate Tierra de Vinos', '2024-09-01', '2024-09-05', 260.00),
+(8, 'Esplendor de la Quebrada', '2024-09-05', '2024-09-06', 210.00),
+(9, 'Mirador Guachipas', '2024-09-10', '2024-09-11', 230.00),
+(10, 'La Magia del Dique', '2024-09-15', '2024-09-18', 190.00);
 
 
 INSERT INTO promos (id, start_time, end_time, discount, travels_id) VALUES
-(1, '2024-08-01 09:00:00', '2024-08-10 18:00:00', 10.00, 1),
-(2, '2024-08-05 09:00:00', '2024-08-15 18:00:00', 15.00, 2),
-(3, '2024-08-10 09:00:00', '2024-08-20 18:00:00', 20.00, 3),
-(4, '2024-08-15 09:00:00', '2024-08-25 18:00:00', 25.00, 4),
-(5, '2024-08-20 09:00:00', '2024-08-30 18:00:00', 30.00, 5),
-(6, '2024-08-25 09:00:00', '2024-09-05 18:00:00', 35.00, 6),
-(7, '2024-09-01 09:00:00', '2024-09-10 18:00:00', 40.00, 7),
-(8, '2024-09-05 09:00:00', '2024-09-15 18:00:00', 45.00, 8),
-(9, '2024-09-10 09:00:00', '2024-09-20 18:00:00', 50.00, 9),
-(10, '2024-09-15 09:00:00', '2024-09-25 18:00:00', 55.00, 10);
-
-
-
-
-INSERT INTO travel_passenger (travels_id, profiles_id) VALUES
-(1, 1),
-(1, 2),
-(2, 3),
-(2, 4),
-(3, 5),
-(3, 6),
-(4, 7),
-(4, 8),
-(5, 9),
-(5, 10);
-
-
-ALTER TABLE places ADD COLUMN category VARCHAR(50);
+(1, '2024-08-01 09:00:00', '2024-08-02 18:00:00', 10.00, 1),
+(2, '2024-08-05 09:00:00', '2024-08-07 18:00:00', 15.00, 2),
+(3, '2024-08-10 09:00:00', '2024-08-11 18:00:00', 10.00, 3),
+(4, '2024-08-15 09:00:00', '2024-08-16 18:00:00', 10.00, 4),
+(5, '2024-08-20 09:00:00', '2024-08-22 18:00:00', 15.00, 5),
+(6, '2024-08-25 09:00:00', '2024-09-27 18:00:00', 15.00, 6),
+(7, '2024-09-01 09:00:00', '2024-09-05 18:00:00', 20.00, 7),
+(8, '2024-09-05 09:00:00', '2024-09-06 18:00:00', 10.00, 8),
+(9, '2024-09-10 09:00:00', '2024-09-11 18:00:00', 10.00, 9),
+(10, '2024-09-15 09:00:00', '2024-09-18 18:00:00', 15.00, 10);
 
 
 INSERT INTO places (name, address, img_url, cities_id, category) VALUES
-('Central Park Hotel', 'New York, NY', 'http://example.com/images/centralparkhotel.jpg', 1, 'Hotel'),
-('Hollywood Hostel', 'Los Angeles, CA', 'http://example.com/images/hollywoodhostel.jpg', 2, 'Hostel'),
-('Chicago Camping', 'Chicago, IL', 'http://example.com/images/chicagocamping.jpg', 3, 'Camping'),
-('Houston Hotel', 'Houston, TX', 'http://example.com/images/houstonhotel.jpg', 4, 'Hotel'),
-('Phoenix Hostel', 'Phoenix, AZ', 'http://example.com/images/phoenixhostel.jpg', 5, 'Hostel'),
-('Philadelphia Camping', 'Philadelphia, PA', 'http://example.com/images/philadelphiacamping.jpg', 6, 'Camping'),
-('San Antonio Hotel', 'San Antonio, TX', 'http://example.com/images/sanantoniohotel.jpg', 7, 'Hotel'),
-('San Diego Hostel', 'San Diego, CA', 'http://example.com/images/sandiegohostel.jpg', 8, 'Hostel'),
-('Dallas Camping', 'Dallas, TX', 'http://example.com/images/dallascamping.jpg', 9, 'Camping'),
-('San Jose Hotel', 'San Jose, CA', 'http://example.com/images/sanjosehotel.jpg', 10, 'Hotel');
+('Bo Hotel & Spa', 'Chicoana, SLA', 'https://media-cdn.tripadvisor.com/media/photo-s/07/c3/9e/cd/grounds-outside-room.jpg', 1, 'Hotel'),
+('El Cortijo Hotel', 'Cachi, SLA', 'http://www.elcortijohotel.com/img/galeria/foto-1.jpg', 2, 'Hotel'),
+('Sala de Payogasta', 'Payogasta, SLA', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/78/f5/c3/hotel.jpg?w=700&h=-1&s=1', 3, 'Hostel'),
+('Hosteria Angastaco', 'Angastaco, SLA', 'https://media-cdn.tripadvisor.com/media/photo-s/18/66/c3/93/photo0jpg.jpg', 4, 'Hosteria'),
+('CabaÃ±as Los Elementos', 'San Carlos, SLA', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/ff/df/7d/caption.jpg?w=700&h=-1&s=1', 5, 'CabaÃ±as'),
+('Camping Municipal de Animana', 'Animana, SLA', 'https://animanasalta.com.ar/ccm/app/image/municipalities/660385/entities/149/20201203_143933_Baja.jpg', 6, 'Camping'),
+('Hotel Aires de Cafayate', 'Cafayate, SLA', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/304079312.jpg?k=44de3962eacf0640814d8ce96db34ed663707f4d244cf4e38e7996d2c468b818&o=&hp=1', 7, 'Hotel'),
+('CabaÃ±as Las Marias', 'Cafayate, SLA', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/b1/ed/e2/cabanas-las-maria.jpg?w=700&h=-1&s=1', 8, 'CabaÃ±as'),
+('Hostal La ViÃ±a', 'La ViÃ±a, SLA', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/209584207.jpg?k=8132a7327055feda00121fac2b468053fe221d5e8816d3caa3d4da828f28265c&o=&hp=1', 9, 'Hostel'),
+('Hotel del Dique', 'Dique Cabra Corral, SLA', 'https://media-cdn.tripadvisor.com/media/photo-s/01/ee/2d/5d/vista-al-embalse-cabra.jpg', 10, 'Hotel');
 
 
 -- Insertar datos en la tabla cities
 INSERT INTO cities (name, img_url) VALUES
-('New York', 'http://example.com/images/ny.jpg'),
-('Los Angeles', 'http://example.com/images/la.jpg'),
-('Chicago', 'http://example.com/images/chicago.jpg'),
-('Houston', 'http://example.com/images/houston.jpg'),
-('Phoenix', 'http://example.com/images/phoenix.jpg'),
-('Philadelphia', 'http://example.com/images/philadelphia.jpg'),
-('San Antonio', 'http://example.com/images/sanantonio.jpg'),
-('San Diego', 'http://example.com/images/sandiego.jpg'),
-('Dallas', 'http://example.com/images/dallas.jpg'),
-('San Jose', 'http://example.com/images/sanjose.jpg');
+('Chicoana', 'hhttps://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Iglesia_San_Pablo_de_Chicoana.jpg/220px-Iglesia_San_Pablo_de_Chicoana.jpg'),
+('Cachi', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Calle_en_Cachi.JPG/120px-Calle_en_Cachi.JPG'),
+('Payogasta', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Payogasta_361.JPG/320px-Payogasta_361.JPG'),
+('Angastaco', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Eglise_Angastaco.JPG/220px-Eglise_Angastaco.JPG'),
+('San Carlos', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/San_Carlos_524.JPG/320px-San_Carlos_524.JPG'),
+('Animana', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/RN40-AR.svg/175px-RN40-AR.svg.png'),
+('Cafayate', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Vi%C3%B1edoCafayate.jpg/120px-Vi%C3%B1edoCafayate.jpg'),
+('Quebrada de Las Conchas', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Tour_to_the_Quebrada_de_las_Conchas.jpg/120px-Tour_to_the_Quebrada_de_las_Conchas.jpg'),
+('La ViÃ±a', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Esperando_%27el_pique%27_-_Pescadero_La_Isla_-_panoramio.jpg/250px-Esperando_%27el_pique%27_-_Pescadero_La_Isla_-_panoramio.jpg'),
+('Dique Cabra Corral', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Embalse_Cabra_Corral_-_Presa_General_Manuel_Belgrano.jpg/300px-Embalse_Cabra_Corral_-_Presa_General_Manuel_Belgrano.jpg');
+
 
 -- Insertar datos en la tabla places
 INSERT INTO places (name, address, img_url, cities_id, category) VALUES
-('Central Park Hiking', 'New York, NY', 'http://example.com/images/centralparkhiking.jpg', 1, 'Senderismo'),
-('Hollywood Horse Riding', 'Los Angeles, CA', 'http://example.com/images/hollywoodhorseriding.jpg', 2, 'Cabalgata'),
-('Chicago Trakking', 'Chicago, IL', 'http://example.com/images/chicagotrekking.jpg', 3, 'Trakking'),
-('Houston Hiking', 'Houston, TX', 'http://example.com/images/houstonhiking.jpg', 4, 'Senderismo'),
-('Phoenix Horse Riding', 'Phoenix, AZ', 'http://example.com/images/phoenixhorseriding.jpg', 5, 'Cabalgata'),
-('Philadelphia Trakking', 'Philadelphia, PA', 'http://example.com/images/philadelphiatrekking.jpg', 6, 'Trakking'),
-('San Antonio Hiking', 'San Antonio, TX', 'http://example.com/images/sanantoniohiking.jpg', 7, 'Senderismo'),
-('San Diego Horse Riding', 'San Diego, CA', 'http://example.com/images/sandiegohorseriding.jpg', 8, 'Cabalgata'),
-('Dallas Trakking', 'Dallas, TX', 'http://example.com/images/dallastrekking.jpg', 9, 'Trakking'),
-('San Jose Hiking', 'San Jose, CA', 'http://example.com/images/sanjosehiking.jpg', 10, 'Senderismo');
-
-
+('Quebrada de Tilian', 'Chicoana, SLA', 'https://media-cdn.tripadvisor.com/media/photo-m/1280/28/98/68/c2/quebrada-de-tilian.jpg', 1, 'Senderismo'),
+('Cachi Adentro', 'Cachi, SLA', 'https://media-cdn.tripadvisor.com/media/photo-s/01/40/6a/f9/cachi-adentro.jpg', 2, 'Cabalgata'),
+('Camino Inca', 'Payogasta, SLA', 'https://upload.wikimedia.org/wikipedia/commons/1/16/Potrero_de_Payogasta.jpg', 3, 'Trakking'),
+('Pucara de Angastaco', 'Angastaco, SLA', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Yayno5.jpg/1200px-Yayno5.jpg', 4, 'Senderismo'),
+('PeÃ±as Blancas', 'San Carlos, SLA', 'https://www.turismoruta40.com.ar/images/salta/sendero-el-cajoncillo.jpg', 5, 'Senderismo'),
+('Tour Guiado', 'Animana, SLA', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/d4/2e/0d/a-paisagem.jpg?w=600&h=400&s=1', 6, 'Cabalgata'),
+('Siete Cascadas', 'Cafayate, SLA', 'https://media-cdn.tripadvisor.com/media/photo-s/11/6e/a7/09/magnifique-cascade.jpg', 7, 'Senderismo'),
+('Quebrada Trakking', 'Quebrada de Las Conchas, SLA', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Tour_to_the_Quebrada_de_las_Conchas.jpg/120px-Tour_to_the_Quebrada_de_las_Conchas.jpg', 8, 'Trakking'),
+('Tour Guiado', 'La ViÃ±a, SLA', 'https://media-cdn.tripadvisor.com/media/photo-s/1d/58/68/79/iglesia-san-antonio-de.jpg', 9, 'Senderismo'),
+('Caminata por El Dique', 'Dique Cabra Corral, SLA', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Cabra_corral.jpg/120px-Cabra_corral.jpg', 10, 'Senderismo');
 
 
 INSERT INTO stops (id, stop_order, days, travels_id, cities_id, places_id) VALUES
-(1, 1, 2, 1, 1, 1),
-(2, 2, 1, 1, 2, 2),
-(3, 1, 3, 2, 3, 3),
-(4, 2, 2, 2, 4, 4),
-(5, 1, 1, 3, 5, 5),
-(6, 2, 3, 3, 6, 6),
-(7, 1, 2, 4, 7, 7),
+(1, 1, 1, 1, 1, 1),
+(2, 2, 2, 1, 2, 2),
+(3, 1, 1, 2, 3, 3),
+(4, 2, 1, 2, 4, 4),
+(5, 1, 2, 3, 5, 5),
+(6, 2, 2, 3, 6, 6),
+(7, 1, 5, 4, 7, 7),
 (8, 2, 1, 4, 8, 8),
-(9, 1, 4, 5, 9, 9),
-(10, 2, 2, 5, 10, 10);
+(9, 1, 1, 5, 9, 9),
+(10, 2, 3, 5, 10, 10);
